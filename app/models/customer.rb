@@ -8,4 +8,15 @@ class Customer < ApplicationRecord
 
   validates :address, :name, presence: true
   validates :email, uniqueness: true
+
+  def redeem_signup_incentive
+    add_to_balance(50)
+  end
+
+  private
+
+  def add_to_balance(amount)
+    self.balance += amount
+    self.save
+  end
 end
