@@ -10,10 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_17_035629) do
+ActiveRecord::Schema.define(version: 2021_04_17_234731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "books", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "author"
+    t.float "price", default: 0.0
+    t.boolean "sold", default: false
+    t.bigint "merchant_id", null: false
+    t.bigint "cart_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cart_id"], name: "index_books_on_cart_id"
+    t.index ["merchant_id"], name: "index_books_on_merchant_id"
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.float "total", default: 0.0
+    t.bigint "customer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_carts_on_customer_id"
+  end
 
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -45,4 +67,7 @@ ActiveRecord::Schema.define(version: 2021_04_17_035629) do
     t.index ["reset_password_token"], name: "index_merchants_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "books", "carts"
+  add_foreign_key "books", "merchants"
+  add_foreign_key "carts", "customers"
 end
