@@ -3,6 +3,7 @@
   <h2>Hello merchant <%= current_merchant.name %> <%= link_to 'log out', destroy_merchant_session_path, method: :delete %></h2>
 <% elsif customer_signed_in? %>
   <h2>Hello customer <%= current_customer.name %> <%= link_to 'log out', destroy_customer_session_path, method: :delete %></h2>
+  <%= link_to 'edit password', edit_customer_registration_path %>
 <% end %>
 
 <%= link_to "Sell some books", new_merchant_registration_path %>
