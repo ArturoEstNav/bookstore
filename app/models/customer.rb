@@ -5,5 +5,5 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :address, :email, :name, :password, presence: true
-  # validates :email, :password, uniqueness: true
+  validates :email, uniqueness: true
 end
