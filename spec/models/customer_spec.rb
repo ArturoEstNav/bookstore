@@ -35,7 +35,11 @@ RSpec.describe Customer, type: :model do
   end
 
   describe 'validations' do
-    it { should validate_uniqueness_of(:email) }
+    it "is not valid if the email is already taken" do
+      # Ignored case sensitivity due to Devise ensuring that emails
+      # are stored in lowercase
+      should validate_uniqueness_of(:email).ignoring_case_sensitivity
+    end
   end
 
 end
