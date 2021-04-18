@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get 'home', to: 'pages#home'
   root to: 'pages#home'
 
-  resources :customers, only: [:create, :edit, :update, :show]
+  resources :customers, only: [:edit, :update, :show]
   resources :books, only: [:new, :create, :edit, :update, :show, :index]
+  resources :merchants, only: [:edit, :update, :show]
+  resources :carts, only: [:show]
 end

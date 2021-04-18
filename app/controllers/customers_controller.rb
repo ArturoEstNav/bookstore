@@ -20,8 +20,10 @@ class CustomersController < ApplicationController
 
   end
 
-  # def customer_params
-  #   params.require(:user).permit(:first_name, :last_name, :gender,
-  #                                :residence_country, :postal_code, :photo)
-  # end
+  private
+
+  def customer_params
+    params.require(:user).permit(:first_name, :last_name, :gender,
+                                 :residence_country, :postal_code, :photo)
+  end
 end
