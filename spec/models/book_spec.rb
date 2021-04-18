@@ -51,7 +51,3 @@ RSpec.describe Book, type: :model do
     it { should belong_to(:merchant) }
   end
 end
-
-
-
-
