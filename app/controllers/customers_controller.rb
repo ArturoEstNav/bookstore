@@ -1,14 +1,13 @@
 class CustomersController < ApplicationController
+  before_action :set_customer, only: [:show, :edit, :update]
+
   def show
-    @customer = Customer.find(params[:id])
   end
 
   def edit
-    @customer = Customer.find(params[:id])
   end
 
   def update
-    @customer = Customer.find(params[:id])
     @customer.update(customer_params)
     if @customer.save
       redirect_to root_path
@@ -18,6 +17,10 @@ class CustomersController < ApplicationController
   end
 
   private
+
+  def set_customer
+    @customer = Customer.find(params[:id])
+  end
 
   def customer_params
     params.require(:customer).permit(:name, :address)
