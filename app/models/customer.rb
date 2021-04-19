@@ -9,6 +9,8 @@ class Customer < ApplicationRecord
   validates :address, :name, presence: true
   validates :email, uniqueness: true
 
+  after_create :redeem_signup_incentive
+
   def redeem_signup_incentive
     add_to_balance(50)
   end
