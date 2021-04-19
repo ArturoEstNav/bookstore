@@ -1,27 +1,34 @@
 require 'faker'
 
 puts 'Cleaning database'
-# Customer.destroy_all
-# Merchant.destroy_all
+Customer.destroy_all
+Merchant.destroy_all
+Cart.destroy_all
 Book.destroy_all
 
-# puts 'Create new customer'
-# customer = Customer.new(
-#   address: '1428 Elm st',
-#   email: 'arturoestradanav@gmail.com',
-#   name: 'Arturo',
-#   password: 'Loremipsum'
-# )
-# customer.save
+puts 'Create new customer'
+customer = Customer.new(
+  address: '1428 Elm st',
+  email: 'arturoestradanav@gmail.com',
+  name: 'Arturo',
+  password: 'Loremipsum'
+)
+customer.save
 
-# puts 'Create new merchant'
-# merchant = Merchant.new(
-#   email: 'contact@arturoestnav.com',
-#   name: 'Arturian bookstores',
-#   password: 'Loremipsum',
-#   phone: '555-895-1237'
-# )
-# merchant.save
+puts 'Create new merchant'
+merchant = Merchant.new(
+  email: 'contact@arturoestnav.com',
+  name: 'Arturian bookstores',
+  password: 'Loremipsum',
+  phone: '555-895-1237'
+)
+merchant.save
+
+puts 'Create new cart'
+cart = Cart.new(
+  customer_id: Customer.last.id
+)
+cart.save
 
 puts 'Create new books'
 30.times do
