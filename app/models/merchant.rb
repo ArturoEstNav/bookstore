@@ -4,7 +4,7 @@ class Merchant < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :books
+  has_many :books, dependent: :destroy
 
   validates :phone, :name, presence: true
   validates :email, uniqueness: true

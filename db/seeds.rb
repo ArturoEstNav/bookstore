@@ -1,7 +1,37 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+
+puts 'Cleaning database'
+# Customer.destroy_all
+# Merchant.destroy_all
+Book.destroy_all
+
+# puts 'Create new customer'
+# customer = Customer.new(
+#   address: '1428 Elm st',
+#   email: 'arturoestradanav@gmail.com',
+#   name: 'Arturo',
+#   password: 'Loremipsum'
+# )
+# customer.save
+
+# puts 'Create new merchant'
+# merchant = Merchant.new(
+#   email: 'contact@arturoestnav.com',
+#   name: 'Arturian bookstores',
+#   password: 'Loremipsum',
+#   phone: '555-895-1237'
+# )
+# merchant.save
+
+puts 'Create new books'
+30.times do
+  new_book = Book.new(
+    title: Faker::Book.title,
+    description: Faker::GreekPhilosophers.quote,
+    author: Faker::Book.author,
+    price: Faker::Commerce.price(range: 0..54.99),
+    merchant_id: Merchant.last.id
+  )
+  new_book.save
+  puts "Created book #{new_book.id}"
+end

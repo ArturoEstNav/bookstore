@@ -1,14 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe Book, type: :model do
+  let(:customer) { Customer.create(address: 'St', email: 'art@telos.com', name: 'Art', password: 'Loremipsum') }
+  let(:merchant) { Merchant.create(phone: '555', email: 'ae@telos.com', name: 'Bookstore', password: 'Loremipsum') }
+  let(:cart) { Cart.create(customer_id: customer.id) }
+
   subject do
     described_class.new(
       title: 'Eloquent Ruby',
       description: 'The ultimate Ruby guide',
       author: 'John',
       price: '25.99',
-      merchant_id: 1,
-      cart_id: 1
+      merchant_id: merchant.id
     )
   end
 
@@ -41,13 +44,8 @@ RSpec.describe Book, type: :model do
     expect(subject).to_not be_valid
   end
 
-  it 'is not valid without an cart_id' do
-    subject.cart_id = nil
-    expect(subject).to_not be_valid
-  end
-
   describe 'Associations' do
-    it { should belong_to(:cart) }
     it { should belong_to(:merchant) }
+    it { should belong_to(:cart).without_validating_presence }
   end
 end
