@@ -10,5 +10,3 @@ class Book < ApplicationRecord
   # ,order_within_rank: "blog_posts.updated_at DESC"
   # scope :sorted, ->{ order(last_name: :asc) }
 end
-
-
