@@ -27,11 +27,19 @@ gem 'jbuilder', '~> 2.7'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
+# Provides quick setup authentification
 gem 'devise'
+# Provides authorization for user type separation
+gem 'pundit'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
+# Provides easier form creation
 gem 'simple_form'
+# Efficient searching suitable for big applications
 gem 'pg_search'
+# Use randomly generated data for seeds
+gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

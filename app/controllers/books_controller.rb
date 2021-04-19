@@ -2,7 +2,13 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :create, :new]
 
   def index
-    @books = Book.all
+    # @query = params[:q]
+    if params[:query].present?
+      @book_search = Book.global_search(params[:query])
+      @books = @global_search.paginate(page: params[:page], per_page: 20)
+    else
+      @books = Book.all
+    end
   end
 
   def show
