@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'carts/show'
   get 'books/new'
   get 'books/edit'
   get 'books/show'
