@@ -6,9 +6,20 @@ class Book < ApplicationRecord
 
   validates :title, :description, :author, :price, presence: true
 
-  # scope :sorted, ->{ order(title: :asc) }
-
-  # pg_search_scope :global_search, against: [:title]
-
   pg_search_scope :search, against: [:title]
+
+  def add_to_cart(cart)
+    self.cart = cart
+    self.save
+  end
+
+  def remove_from_cart
+    self.cart_id = nil
+    self.save
+  end
+
+  def sell_book
+    self.sold = true
+    self.save
+  end
 end
