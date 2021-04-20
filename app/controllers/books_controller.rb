@@ -2,6 +2,10 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update]
 
   def index
+    if customer_signed_in?
+      @cart = Cart.find(current_customer)
+    end
+
     if params[:query].present?
       @books = Book.search(params[:query])
     else

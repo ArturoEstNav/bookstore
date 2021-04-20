@@ -21,11 +21,16 @@
 </div>
 <div>
   <% @books.each do |book| %>
-    <div style="border: 1px solid red;">
-      <%= book.title %>
-      <%= book.description %>
-      <%= book.price %>
-      <%= book.merchant_name %>
+    <div class="card-book d-flex justify-content-between">
+      <div>
+        <p><%= book.title %></p>
+        <p><%= book.description %></p>
+        <p><%= book.merchant_name %></p>
+      </div>
+      <div class="d-flex flex-column justify-content-between">
+        <p>$<%= book.price %></p>
+        <%= link_to "View book", book_path(book), class: "btn btn-primary" %>
+      </div>
     </div>
   <% end %>
 </div>
