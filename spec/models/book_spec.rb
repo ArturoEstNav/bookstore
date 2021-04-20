@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Book, type: :model do
   let(:customer) { Customer.create(address: 'St', email: 'art@telos.com', name: 'Art', password: 'Loremipsum') }
   let(:merchant) { Merchant.create(phone: '555', email: 'ae@telos.com', name: 'Bookstore', password: 'Loremipsum') }
-  let(:cart) { Cart.create(customer_id: customer.id) }
+  let(:cart) { Cart.create(customer: customer) }
 
   subject do
     described_class.new(
@@ -11,7 +11,7 @@ RSpec.describe Book, type: :model do
       description: 'The ultimate Ruby guide',
       author: 'John',
       price: '25.99',
-      merchant_id: merchant.id
+      merchant: merchant
     )
   end
 

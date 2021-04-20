@@ -21,7 +21,7 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
-    @book.merchant_id = current_merchant.id
+    @book.merchant = current_merchant
     @book.merchant_name = current_merchant.name
     if @book.save
       redirect_to books_show_path(@book)

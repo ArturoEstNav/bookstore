@@ -5,7 +5,7 @@ RSpec.describe Cart, type: :model do
 
   subject do
     described_class.new(
-      customer_id: customer.id
+      customer: customer
     )
   end
 

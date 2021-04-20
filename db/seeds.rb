@@ -26,7 +26,7 @@ merchant.save
 
 puts 'Create new cart'
 cart = Cart.new(
-  customer_id: Customer.last.id
+  customer: Customer.last
 )
 cart.save
 
@@ -37,7 +37,7 @@ puts 'Create new books'
     description: Faker::GreekPhilosophers.quote,
     author: Faker::Book.author,
     price: Faker::Commerce.price(range: 0..54.99),
-    merchant_id: Merchant.last.id,
+    merchant: Merchant.last,
     merchant_name: Merchant.last.name
   )
   new_book.save
