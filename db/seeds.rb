@@ -37,7 +37,8 @@ puts 'Create new books'
     description: Faker::GreekPhilosophers.quote,
     author: Faker::Book.author,
     price: Faker::Commerce.price(range: 0..54.99),
-    merchant_id: Merchant.last.id
+    merchant_id: Merchant.last.id,
+    merchant_name: Merchant.last.name
   )
   new_book.save
   puts "Created book #{new_book.id}"

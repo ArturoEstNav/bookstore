@@ -25,9 +25,7 @@
       <%= book.title %>
       <%= book.description %>
       <%= book.price %>
-      <span style="color: red;">
-        <%= @merchants[book.merchant_id] %>
-      </span>
+      <%= book.merchant_name %>
     </div>
   <% end %>
 </div>

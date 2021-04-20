@@ -1,15 +1,11 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :create, :new]
+  before_action :set_book, only: [:show, :edit, :update]
 
   def index
-    # @query = params[:q]
     if params[:query].present?
-      # @book_search = Book.search(params[:query])
-      # @books = @global_search.paginate(page: params[:page], per_page: 20)
       @books = Book.search(params[:query])
     else
       @books = Book.all
-      @merchants = Merchant.all.map { |merchant| [merchant.id, merchant.name] }.to_h
     end
   end
 
@@ -17,20 +13,39 @@ class BooksController < ApplicationController
   end
 
   def new
+    @book = Book.new
   end
 
   def edit
   end
 
   def create
+    @book = Book.new(book_params)
+    @book.merchant_id = current_merchant.id
+    @book.merchant_name = current_merchant.name
+    if @book.save
+      redirect_to books_show_path(@book)
+    else
+      render :new
+    end
   end
 
   def update
+    @book.update(book_params)
+    if @book.save
+      redirect_to books_show_path(@book)
+    else
+      render :edit
+    end
   end
 
   private
 
   def set_book
     @book = Book.find(params[:id])
+  end
+
+  def book_params
+    params.require(:book).permit(:name, :address)
   end
 end
