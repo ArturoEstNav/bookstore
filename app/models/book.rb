@@ -1,12 +1,14 @@
 class Book < ApplicationRecord
-  # includePgSearch
+  include PgSearch
 
   belongs_to :merchant
   belongs_to :cart, optional: true
 
   validates :title, :description, :author, :price, presence: true
 
+  # scope :sorted, ->{ order(title: :asc) }
+
   # pg_search_scope :global_search, against: [:title]
-  # ,order_within_rank: "blog_posts.updated_at DESC"
-  # scope :sorted, ->{ order(last_name: :asc) }
+
+  pg_search_scope :search, against: [:title]
 end

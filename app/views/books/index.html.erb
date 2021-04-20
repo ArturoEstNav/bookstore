@@ -1,20 +1,33 @@
 <h1>Books#index</h1>
-
-<%= simple_form_for :book_search, url: books_index_path, method: "GET" do |f| %>
-  <%= text_field_tag :q, params[:q], autocomplete: :off,
-      placeholder: "Search by programming language..." %>
-  <input type="submit" value="Search" class="btn btn-success">
-  <%= f.hidden_field :dashboard, value: "present"%>
-<!--       <div class="custom-container-search-buttons">
-        <div class="dashboard-element">
-          <p class="dashboard-heading">
-            Sort results by
-          </p>
-          <div class="dashboard-options">
-            <%= select_tag "newest_first", raw('
-              <option value="true" selected="selected">Newest first</option><option value="false" >Oldest first</option>
-            ')%>
+<div style="border: 1px solid blue;">
+  <%= simple_form_for :book_search, url: books_index_path, method: "GET" do |f| %>
+    <%= text_field_tag :query, params[:query], autocomplete: :off,
+        placeholder: "Search by book title..." %>
+    <input type="submit" name=”commit”  value="Search" class="btn btn-success">
+  <!-- <%= f.hidden_field :dashboard, value: "present"%> -->
+  <!--       <div class="custom-container-search-buttons">
+          <div class="dashboard-element">
+            <p class="dashboard-heading">
+              Sort results by
+            </p>
+            <div class="dashboard-options">
+              <%= select_tag "newest_first", raw('
+                <option value="true" selected="selected">Newest first</option><option value="false" >Oldest first</option>
+              ')%>
+            </div>
           </div>
-        </div>
-      </div> -->
-<% end %>
+        </div> -->
+  <% end %>
+</div>
+<div>
+  <% @books.each do |book| %>
+    <div style="border: 1px solid red;">
+      <%= book.title %>
+      <%= book.description %>
+      <%= book.price %>
+      <span style="color: red;">
+        <%= @merchants[book.merchant_id] %>
+      </span>
+    </div>
+  <% end %>
+</div>

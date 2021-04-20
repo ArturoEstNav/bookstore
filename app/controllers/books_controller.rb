@@ -4,10 +4,12 @@ class BooksController < ApplicationController
   def index
     # @query = params[:q]
     if params[:query].present?
-      @book_search = Book.global_search(params[:query])
-      @books = @global_search.paginate(page: params[:page], per_page: 20)
+      # @book_search = Book.search(params[:query])
+      # @books = @global_search.paginate(page: params[:page], per_page: 20)
+      @books = Book.search(params[:query])
     else
       @books = Book.all
+      @merchants = Merchant.all.map { |merchant| [merchant.id, merchant.name] }.to_h
     end
   end
 
