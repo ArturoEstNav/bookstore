@@ -11,7 +11,7 @@ customer = Customer.new(
   address: '1428 Elm st',
   email: 'arturoestradanav@gmail.com',
   name: 'Arturo',
-  password: 'Loremipsum'
+  password: '123456'
 )
 customer.save
 
@@ -19,14 +19,14 @@ puts 'Create new merchant'
 merchant = Merchant.new(
   email: 'contact@arturoestnav.com',
   name: 'Arturian bookstores',
-  password: 'Loremipsum',
+  password: '123456',
   phone: '555-895-1237'
 )
 merchant.save
 
 puts 'Create new cart'
 cart = Cart.new(
-  customer: Customer.last
+  customer_id: Customer.last.id
 )
 cart.save
 
@@ -37,7 +37,7 @@ puts 'Create new books'
     description: Faker::GreekPhilosophers.quote,
     author: Faker::Book.author,
     price: Faker::Commerce.price(range: 0..54.99),
-    merchant: Merchant.last,
+    merchant_id: Merchant.last.id,
     merchant_name: Merchant.last.name
   )
   new_book.save

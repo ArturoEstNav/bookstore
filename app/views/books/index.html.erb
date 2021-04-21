@@ -1,5 +1,5 @@
 <h1>Books#index</h1>
-<div style="border: 1px solid blue;">
+<div>
   <%= simple_form_for :book_search, url: books_index_path, method: "GET" do |f| %>
     <%= text_field_tag :query, params[:query], autocomplete: :off,
         placeholder: "Search by book title..." %>
