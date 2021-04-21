@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   get 'carts/show'
-  get 'books/new'
-  get 'books/edit'
-  get 'books/show'
+  # get 'books/new'
+  # get 'books/edit'
+  # get 'books/show'
   get 'books/index'
   get 'home', to: 'pages#home'
   get 'about', to: 'pages#about'
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :customers, only: [:edit, :update, :show]
-  resources :books, only: [:new, :create, :edit, :update, :show, :index]
+  resources :books
   resources :merchants, only: [:edit, :update, :show]
   resources :carts, only: [:show]
 end
