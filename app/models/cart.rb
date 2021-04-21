@@ -2,19 +2,6 @@ class Cart < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :books, through: :cart_items
 
-  def add_book(book_params)
-    current_item = cart_items.find_by(book_id: book_params[:book][:book_id])
-    if current_item
-      current_item.quantity += book_params[:book][:quantity].to_i
-    current_item.save
-    else
-    new_item = cart_items.create(book_id: book_params[:book][:book_id],
-      quantity: book_params[:book][:quantity],
-      cart_id: self.id)
-    end
-    new_item
-  end
-
   def enough_balance?(customer_balance)
     customer_balance >= self.total ? true : false
   end
@@ -26,29 +13,28 @@ class Cart < ApplicationRecord
     self.save
   end
 
-  private
-
   def set_total
+    set_subtotal
+    set_service_fee
     self.total = (self.subtotal + self.service_fee).round(2)
   end
 
-  def add_to_subtotal(amount)
-    self.subtotal += amount
-    self.subtotal = self.subtotal.round(2)
+  private
+
+
+  def set_subtotal
+    if self.books.empty?
+      self.subtotal =  0.00
+    else
+      self.subtotal = self.books.collect{|book| book.price}.sum.round(3)
+    end
   end
 
-  def remove_from_subtotal(amount)
-    self.subtotal -= amount
-    self.subtotal = self.subtotal.round(2)
-  end
-
-  def add_to_service_fee(amount)
-    self.service_fee += amount
-    self.service_fee = self.service_fee.round(2)
-  end
-
-  def remove_from_service_fee(amount)
-    self.service_fee -= amount
-    self.service_fee = self.service_fee.round(2)
+  def set_service_fee
+    if self.books.empty?
+      self.service_fee = 0.00
+    else
+      self.service_fee = self.books.size
+    end
   end
 end

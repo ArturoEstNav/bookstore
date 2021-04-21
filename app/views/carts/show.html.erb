@@ -3,12 +3,11 @@
   <% @cart_items.each do |item| %>
     <p> <%= item.book.title %> $<%= item.book.price %> </p>
     <p> <%= link_to "Remove item", cart_item_path(item), method: :delete, remote: true %></p>
+
   <% end %>
-  <p>Subtotal: </p>
-  <p>Subtotal: </p>
-  <p>Total: </p>
-  <%= @cart_items.size %>
-  <!-- button to empty cart -->
+  <p>Subtotal: <%= @cart.subtotal %></p>
+  <p>Subtotal: <%= @cart.service_fee %></p>
+  <p>Total: <%= @cart.total %></p>
 </div>
 
 
