@@ -1,10 +1,8 @@
 require 'faker'
 
 puts 'Cleaning database'
-Customer.destroy_all
 Merchant.destroy_all
-Cart.destroy_all
-Book.destroy_all
+Customer.destroy_all
 
 puts 'Create new customer'
 customer = Customer.new(
@@ -25,9 +23,7 @@ merchant = Merchant.new(
 merchant.save
 
 puts 'Create new cart'
-cart = Cart.new(
-  customer_id: Customer.last.id
-)
+cart = Cart.new(customer: Customer.last)
 cart.save
 
 puts 'Create new books'
@@ -37,7 +33,7 @@ puts 'Create new books'
     description: Faker::GreekPhilosophers.quote,
     author: Faker::Book.author,
     price: Faker::Commerce.price(range: 0..54.99),
-    merchant_id: Merchant.last.id,
+    merchant: Merchant.last,
     merchant_name: Merchant.last.name
   )
   new_book.save

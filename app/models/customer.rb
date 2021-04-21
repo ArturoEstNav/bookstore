@@ -4,7 +4,7 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_one :cart
+  has_one :cart, dependent: :destroy
 
   validates :address, :name, presence: true
   validates :email, uniqueness: true
