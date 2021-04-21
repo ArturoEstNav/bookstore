@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   get 'books/edit'
   get 'books/show'
   get 'books/index'
-  devise_for :merchants
-  devise_for :customers
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get 'home', to: 'pages#home'
+  get 'about', to: 'pages#about'
+  devise_for :customers
+  devise_for :merchants
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'pages#home'
 
   resources :customers, only: [:edit, :update, :show]
