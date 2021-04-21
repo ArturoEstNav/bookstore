@@ -3,6 +3,7 @@ require 'faker'
 puts 'Cleaning database'
 Merchant.destroy_all
 Customer.destroy_all
+Cart.destroy_all
 
 puts 'Create new customer'
 customer = Customer.new(
@@ -21,10 +22,6 @@ merchant = Merchant.new(
   phone: '555-895-1237'
 )
 merchant.save
-
-puts 'Create new cart'
-cart = Cart.new(customer: Customer.last)
-cart.save
 
 puts 'Create new books'
 30.times do

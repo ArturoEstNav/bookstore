@@ -2,6 +2,8 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update]
 
   def index
+    @cart_item = CartItem.new
+
     if customer_signed_in?
       @cart = Cart.find(current_customer)
     end

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'carts/show'
+  # get 'carts/show'
   get 'books/new'
   get 'books/edit'
   get 'books/show'
@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   resources :customers, only: [:edit, :update, :show]
   resources :books, only: [:new, :create, :edit, :update, :show, :index]
   resources :merchants, only: [:edit, :update, :show]
-  resources :carts, only: [:show]
+  resources :cart_items, only: [:create, :destroy]
+  resource :carts, only: [:show]
 end

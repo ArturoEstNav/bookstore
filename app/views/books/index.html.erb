@@ -1,5 +1,7 @@
 <h1>Books#index</h1>
 <div>
+
+  <%= link_to "Checkou", carts_path %>
   <%= simple_form_for :book_search, url: books_index_path, method: "GET" do |f| %>
     <%= text_field_tag :query, params[:query], autocomplete: :off,
         placeholder: "Search by book title..." %>
@@ -29,8 +31,15 @@
       </div>
       <div class="d-flex flex-column justify-content-between">
         <p>$<%= book.price %></p>
+        <%= simple_form_for @cart_item do |f| %>
+          <%= f.input :book_id, as: :hidden, input_html: { value: book.id } %>
+          <%= f.input :cart_id, as: :hidden, input_html: { value: @cart.id } %>
+          <%= f.submit %>
+        <% end %>
         <%= link_to "View book", book_path(book), class: "btn btn-primary" %>
       </div>
     </div>
   <% end %>
+
+
 </div>

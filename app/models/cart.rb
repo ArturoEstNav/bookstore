@@ -1,4 +1,20 @@
 class Cart < ApplicationRecord
+  has_many :cart_items, dependent: :destroy
+  has_many :books, through: :cart_items
+
+  def add_book(book_params)
+    current_item = cart_items.find_by(book_id: book_params[:book][:book_id])
+    if current_item
+      current_item.quantity += book_params[:book][:quantity].to_i
+    current_item.save
+    else
+    new_item = cart_items.create(book_id: book_params[:book][:book_id],
+      quantity: book_params[:book][:quantity],
+      cart_id: self.id)
+    end
+    new_item
+  end
+
   def enough_balance?(customer_balance)
     customer_balance >= self.total ? true : false
   end

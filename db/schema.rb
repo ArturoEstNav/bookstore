@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_21_172433) do
+ActiveRecord::Schema.define(version: 2021_04_21_174726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(version: 2021_04_21_172433) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "merchant_name"
     t.index ["merchant_id"], name: "index_books_on_merchant_id"
+  end
+
+  create_table "cart_items", force: :cascade do |t|
+    t.bigint "cart_id", null: false
+    t.bigint "book_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_cart_items_on_book_id"
+    t.index ["cart_id"], name: "index_cart_items_on_cart_id"
   end
 
   create_table "carts", force: :cascade do |t|
@@ -66,25 +75,7 @@ ActiveRecord::Schema.define(version: 2021_04_21_172433) do
     t.index ["reset_password_token"], name: "index_merchants_on_reset_password_token", unique: true
   end
 
-  create_table "order_books", force: :cascade do |t|
-    t.bigint "book_id", null: false
-    t.bigint "order_id", null: false
-    t.float "total"
-    t.float "unit_price"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["book_id"], name: "index_order_books_on_book_id"
-    t.index ["order_id"], name: "index_order_books_on_order_id"
-  end
-
-  create_table "orders", force: :cascade do |t|
-    t.float "subtotal"
-    t.float "total"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   add_foreign_key "books", "merchants"
-  add_foreign_key "order_books", "books"
-  add_foreign_key "order_books", "orders"
+  add_foreign_key "cart_items", "books"
+  add_foreign_key "cart_items", "carts"
 end
