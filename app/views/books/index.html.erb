@@ -1,9 +1,9 @@
-<h1>Books#index</h1>
+<h1>Explore our books</h1>
 <div>
   <%= simple_form_for :book_search, url: books_index_path, method: "GET" do |f| %>
     <%= text_field_tag :query, params[:query], autocomplete: :off,
         placeholder: "Search by book title..." %>
-    <input type="submit" name=”commit”  value="Search" class="btn btn-success">
+    <input type="submit" name=”commit”  value="Search" class="btn btn-primary">
   <!-- <%= f.hidden_field :dashboard, value: "present"%> -->
   <!--       <div class="custom-container-search-buttons">
           <div class="dashboard-element">
@@ -20,17 +20,21 @@
   <% end %>
 </div>
 <div>
-  <% @books.each do |book| %>
-    <div class="card-book d-flex justify-content-between">
-      <div>
-        <p><%= book.title %></p>
-        <p><%= book.description %></p>
-        <p><%= book.merchant_name %></p>
+  <% if @books.empty? %>
+    <p class="text-alert text-primary">Sorry, no results found for your search</p>
+  <% else %>
+    <% @books.each do |book| %>
+      <div class="card-book d-flex justify-content-between">
+        <div>
+          <p><%= book.title %></p>
+          <p><%= book.description %></p>
+          <p><%= book.merchant_name %></p>
+        </div>
+        <div class="d-flex flex-column justify-content-between">
+          <p>$<%= book.price %></p>
+          <%= link_to "View book", book_path(book), class: "btn btn-primary" %>
+        </div>
       </div>
-      <div class="d-flex flex-column justify-content-between">
-        <p>$<%= book.price %></p>
-        <%= link_to "View book", book_path(book), class: "btn btn-primary" %>
-      </div>
-    </div>
+    <% end %>
   <% end %>
 </div>
