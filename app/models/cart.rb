@@ -6,13 +6,6 @@ class Cart < ApplicationRecord
     customer_balance >= self.total ? true : false
   end
 
-  def empty_cart
-    self.subtotal = 0
-    self.service_fee = 0
-    set_total
-    self.save
-  end
-
   def set_total
     set_subtotal
     set_service_fee

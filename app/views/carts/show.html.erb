@@ -8,6 +8,7 @@
   <p>Subtotal: <%= @cart.subtotal %></p>
   <p>Subtotal: <%= @cart.service_fee %></p>
   <p>Total: <%= @cart.total %></p>
+  <%= link_to 'Purchase', carts_path, method: :patch, class: "btn btn-primary" %>
 </div>
 
 

@@ -4,14 +4,10 @@ class BooksController < ApplicationController
   def index
     @cart_item = CartItem.new
 
-    if customer_signed_in?
-      @cart = Cart.find(current_customer)
-    end
-
     if params[:query].present?
-      @books = Book.search(params[:query])
+      @books = Book.where(sold: false).search(params[:query])
     else
-      @books = Book.all
+      @books = Book.where(sold: false)
     end
   end
 
