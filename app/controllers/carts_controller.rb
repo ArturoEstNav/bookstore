@@ -12,7 +12,7 @@ class CartsController < ApplicationController
 
   def update
     @customer = current_customer
-    if @cart.total
+    if @cart.total == 0
       redirect_to books_index_path
     elsif @cart.enough_balance?(@customer.balance)
       @customer.remove_from_balance(@cart.total)
