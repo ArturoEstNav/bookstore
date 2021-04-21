@@ -7,6 +7,9 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto d-flex align-items-center">
+    <li>
+      <%= link_to "Shopping cart", carts_path %>
+    </li>
     <% if merchant_signed_in? %>
       <li>
         <%= link_to 'My profile', merchant_path(current_merchant) %>

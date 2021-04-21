@@ -8,7 +8,11 @@
   <p>Subtotal: <%= @cart.subtotal %></p>
   <p>Subtotal: <%= @cart.service_fee %></p>
   <p>Total: <%= @cart.total %></p>
-  <%= link_to 'Purchase', carts_path, method: :patch, class: "btn btn-primary" %>
+  <% if customer_signed_in?  %>
+    <%= link_to 'Purchase', carts_path, method: :patch, class: "btn btn-primary" %>
+  <% else  %>
+    <%= link_to 'Purchase', new_customer_session_path, class: "btn btn-primary" %>
+  <% end %>
 </div>
 
 

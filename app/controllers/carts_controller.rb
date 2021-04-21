@@ -12,7 +12,9 @@ class CartsController < ApplicationController
 
   def update
     @customer = current_customer
-    if @cart.enough_balance?(@customer.balance)
+    if @cart.total
+      redirect_to books_index_path
+    elsif @cart.enough_balance?(@customer.balance)
       @customer.remove_from_balance(@cart.total)
       @cart.books.each{|book| book.sell_book}
       @cart.books.destroy_all
