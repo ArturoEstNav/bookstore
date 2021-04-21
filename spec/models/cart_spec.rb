@@ -20,6 +20,5 @@ RSpec.describe Cart, type: :model do
 
   describe 'Associations' do
     it { should belong_to(:customer) }
-    it { should have_many(:books).without_validating_presence }
   end
 end

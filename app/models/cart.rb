@@ -1,6 +1,5 @@
 class Cart < ApplicationRecord
   belongs_to :customer
-  has_many :books
 
   def add_book(book_price)
     add_to_subtotal(book_price)

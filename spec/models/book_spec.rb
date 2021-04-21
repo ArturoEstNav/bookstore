@@ -46,6 +46,5 @@ RSpec.describe Book, type: :model do
 
   describe 'Associations' do
     it { should belong_to(:merchant) }
-    it { should belong_to(:cart).without_validating_presence }
   end
 end
