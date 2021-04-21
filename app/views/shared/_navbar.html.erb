@@ -1,28 +1,19 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-custom fixed-top">
   <%= link_to root_path, class: "navbar-brand" do %>
-    Hej
   <% end %>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto d-flex align-items-center">
-      <% if true %>
-        <li class="nav-item">
-          Wolf
-        </li>
-      <% else %>
-        <li class="nav-item">
-          Alice
-        </li>
-      <% end %>
+    <% if merchant_signed_in? %>
+      <%= link_to 'log out', destroy_merchant_session_path, method: :delete %>
+    <% elsif customer_signed_in? %>
+      <%= link_to 'log out', destroy_customer_session_path, method: :delete %></h2>
+    <% else %>
+      <p>hi</p>
+    <% end %>
     </ul>
   </div>
-
 </div>
-<!--
 
-<% if merchant_signed_in? %>
-<% elsif customer_signed_in? %>
-  <h2>Hello customer <%= link_to current_customer.name, customer_path(current_customer) %> <%= link_to 'log out', destroy_customer_session_path, method: :delete %></h2>
-<% end %>

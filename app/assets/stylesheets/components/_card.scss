@@ -1,6 +1,11 @@
-.card-book{
+.card-book, .card-book-small{
+  display: inline-block;
   border: 3px solid #ccc;
   border-radius: 3px;
   margin: 16px;
   padding: 16px;
+}
+
+.card-book-small{
+  width: 45%;
 }
