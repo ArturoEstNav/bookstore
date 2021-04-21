@@ -1,20 +1,4 @@
 class Cart < ApplicationRecord
-  belongs_to :customer
-
-  def add_book(book_price)
-    add_to_subtotal(book_price)
-    add_to_service_fee(1.0)
-    set_total
-    self.save
-  end
-
-  def remove_book(book_price)
-    remove_from_subtotal(book_price)
-    remove_from_service_fee(1.0)
-    set_total
-    self.save
-  end
-
   def enough_balance?(customer_balance)
     customer_balance >= self.total ? true : false
   end

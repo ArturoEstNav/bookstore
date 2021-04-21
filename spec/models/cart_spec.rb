@@ -17,8 +17,4 @@ RSpec.describe Cart, type: :model do
     subject.customer_id = nil
     expect(subject).to_not be_valid
   end
-
-  describe 'Associations' do
-    it { should belong_to(:customer) }
-  end
 end
