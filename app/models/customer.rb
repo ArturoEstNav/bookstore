@@ -13,6 +13,10 @@ class Customer < ApplicationRecord
     add_to_balance(50)
   end
 
+  def request_credit
+    add_to_balance(100)
+  end
+
   def remove_from_balance(amount)
     self.balance -= amount
     self.save
