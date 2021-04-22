@@ -1,2 +1,8 @@
-<h1>Books#new</h1>
-<p>Find me in app/views/books/new.html.erb</p>
+<h1>Add a new book</h1>
+<%= simple_form_for @book do |f| %>
+  <%= f.input :title, label: 'Title' %>
+  <%= f.input :description, label: 'Description'%>
+  <%= f.input :author, label: 'Author'%>
+  <%= f.input :price, label: 'Price'%>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>

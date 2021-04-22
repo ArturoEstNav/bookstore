@@ -1,6 +1,12 @@
-<h1>Announce your rare material and get the right exposure</h1>
-<p>We specialize in exposing hard to find, limited editions and signed copies of
-all kinds of literature to collectors and niche customers.</p>
-<p>If you have some hidden gems, let us shine them the right persons way!</p>
-<%= link_to 'Get started', new_merchant_session_path, class: 'btn btn-success' %>
+
+ <div class="pt-2">
+    <h1 class="pb-4">Announce your rare material and get the right exposure</h1>
+    <p>
+      We specialize in exposing hard to find, limited editions and signed copies of
+    all kinds of literature to collectors and niche customers.
+    </p>
+    <p class="pb-4">If you have some hidden gems, let us shine them the right persons way!</p>
+    <%= link_to 'Get started', new_merchant_session_path, class: "btn btn-primary" %>
+    <%= render 'shared/newest_books' %>
+ </div>
 

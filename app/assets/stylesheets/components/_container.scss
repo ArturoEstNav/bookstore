@@ -1,12 +1,38 @@
 .container-navbar-custom{
-  margin-bottom: 120px;
+  margin-bottom: 150px;
+}
+
+.container-main{
+  height: 50vh;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+}
+
+.container-cart{
+  border-bottom: 2px solid #ccc;
+  margin-bottom: 16px;
 }
 
 .container-form-search{
-  margin-bottom: 56px;
+  margin: 32px 0;
 }
 
 .container-books-recent{
   display: block;
+  padding: 64px 0;
+}
 
+.container-search-results{
+  padding: 24px;
+}
+
+.container-links-devise{
+  padding: 64px 0;
+}
+
+@media screen and (min-width: 995px) {
+  .container-form-search{
+    margin: 48px 0;
+  }
 }

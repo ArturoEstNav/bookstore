@@ -1,22 +1,36 @@
-<% if merchant_signed_in? %>
-  <h1>Add new books to your catalog</h1>
-  <%= link_to 'Get started', books_new_path %>
-<% elsif customer_signed_in? %>
-  <h1>New rare and collectible books get added everyday</h1>
-<% else %>
-  <h1>Signup today and get a $50 coupon!</h1>
-  <%= link_to "Find some hidden gems", new_customer_registration_path, class: "btn btn-success" %>
-<% end %>
-<div>
-  <div class="container-books-recent">
-    <% @newest_books.each do |book| %>
-      <div class="card-book-small">
-        <p><%= book.title %></p>
-        <p><%= book.merchant_name %></p>
-        <p>$<%= book.price %></p>
-        <%= link_to "View book", book_path(book), class: "btn btn-primary" %>
+<div class="container-main">
+  <div>
+    <% if merchant_signed_in? %>
+      <div class="pb-5">
+        <h1>Add new books to your catalog</h1>
+        <p class="text-banner">
+          Everyday rare, collectible and single print books
+          get uploaded to our platform and get in front of
+          avid readers everyday.
+        </p>
+        <%= link_to 'Get started', books_new_path, class: 'btn btn-info' %>
       </div>
+    <% elsif customer_signed_in? %>
+      <h1>New collectible books get added everyday</h1>
+      <p class="text-banner">
+        Everyday rare, collectible and single print books
+        get uploaded to our platform and get in front of
+        avid readers everyday.
+      </p>
+    <% else %>
+      <h1>Sign up today and get a $50 coupon!</h1>
+      <p class="text-banner">
+        Everyday rare, collectible and single print books
+        get uploaded to our platform and get in front of
+        avid readers everyday.
+      </p>
     <% end %>
+    <h3 class="text-warning">
+      <%= link_to "Browse our collection", books_path %>
+    </h3>
   </div>
-  <%= link_to "Browse the entire catalog", books_index_path %>
+</div>
+
+<div>
+<%= render 'shared/newest_books' %>
 </div>

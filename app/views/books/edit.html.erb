@@ -1,8 +1,8 @@
 <h1>Edit <%= @book.title %></h1>
 <%= simple_form_for @book do |f| %>
   <%= f.input :title, label: 'Title' %>
-  <%= f.input :description, label: 'Description' %>
-  <%= f.input :author, label: 'Author' %>
+  <%= f.input :description, label: 'Description'%>
+  <%= f.input :author, label: 'Author'%>
   <%= f.input :price, label: 'Price'%>
-  <%= f.button :submit %>
+  <%= f.button :submit, class: 'btn btn-primary' %>
 <% end %>

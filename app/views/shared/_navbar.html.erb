@@ -1,37 +1,41 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-custom fixed-top" >
   <%= link_to root_path, class: "navbar-brand" do %>
-    The bookstore
+    bookstore
   <% end %>
-  <button class="navbar-toggler" type="button">
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto d-flex align-items-center">
     <% if merchant_signed_in? %>
-      <li>
+      <li class="nav-item">
         <%= link_to 'My profile', merchant_path(current_merchant) %>
       </li>
-      <li>
+      <li class="nav-item">
         <%= link_to 'Log out', destroy_merchant_session_path, method: :delete %>
       </li>
     <% elsif customer_signed_in? %>
-      <li>
+      <li class="nav-item">
         <%= link_to "Shopping cart", carts_path %>
       </li>
-      <li>
+      <li class="nav-item">
         <%= link_to 'My profile', customer_path(current_customer) %>
       </li>
-      <li>
+      <li class="nav-item">
         <%= link_to 'Log out', destroy_customer_session_path, method: :delete %>
       </li>
     <% else %>
-      <li>
-        <%= link_to "Shopping cart", carts_path %>
+      <li class="nav-item">
+        <%= link_to carts_path do %>
+          Shopping cart
+        <% end %>
       </li>
-      <li>
-        <%= link_to 'Got books to sell?', about_path %>
+      <li class="nav-item">
+        <%= link_to 'Merchants', about_path %>
       </li>
-      <li>
+      <li class="nav-item">
         <%= link_to 'Log in', customer_session_path  %>
       </li>
     <% end %>

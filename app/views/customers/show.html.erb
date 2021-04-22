@@ -1,4 +1,4 @@
-<h1><%= @customer.name %></h1>
-<h2>Your money: $<%= @customer.balance %></h2>
-
-<%= link_to 'Request store credit', credit_path, method: :patch, remote: true, class: "btn btn-primary"%>
+<h1 class="pb-4">Hello <%= @customer.name %></h1>
+<p class="pb-4">Your balance is: $<%= @customer.balance %></p>
+<%= link_to 'Request store credit', credit_path, method: :patch, remote: true, class: "btn btn-primary pb-4" %>
+<%= render 'shared/newest_books' %>

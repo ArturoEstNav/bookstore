@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-  before_action :set_variables
+  before_action :set_variables, :set_newest_books
 
   def show
     @cart_items = @cart.cart_items
@@ -31,5 +31,9 @@ class CartsController < ApplicationController
 
   def set_variables
     @cart.set_total
+  end
+
+  def set_newest_books
+    @newest_books = Book.where(sold: false).last(4)
   end
 end
