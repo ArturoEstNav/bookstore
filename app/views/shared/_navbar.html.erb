@@ -28,10 +28,12 @@
       </li>
     <% else %>
       <li class="nav-item">
-        <%= link_to "Shopping cart", carts_path %>
+        <%= link_to carts_path do %>
+          Shopping cart
+        <% end %>
       </li>
       <li class="nav-item">
-        <%= link_to 'Got books to sell?', about_path %>
+        <%= link_to 'Merchants', about_path %>
       </li>
       <li class="nav-item">
         <%= link_to 'Log in', customer_session_path  %>
