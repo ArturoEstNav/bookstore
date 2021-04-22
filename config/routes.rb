@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :customers, only: [:edit, :update, :show]
-  resources :books, only: [:new, :create, :edit, :update, :show, :index]
+  resources :books
   resources :merchants, only: [:edit, :update, :show]
   resources :cart_items, only: [:create, :destroy]
   resource :carts, only: [:show, :update]

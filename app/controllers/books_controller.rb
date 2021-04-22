@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update]
+  before_action :set_book, only: [:show, :edit, :update, :destroy]
 
   def index
     @cart_item = CartItem.new
@@ -26,7 +26,7 @@ class BooksController < ApplicationController
     @book.merchant = current_merchant
     @book.merchant_name = current_merchant.name
     if @book.save
-      redirect_to books_show_path(@book)
+      redirect_to book_path(@book)
     else
       render :new
     end
@@ -35,10 +35,15 @@ class BooksController < ApplicationController
   def update
     @book.update(book_params)
     if @book.save
-      redirect_to books_show_path(@book)
+      redirect_to book_path(@book)
     else
       render :edit
     end
+  end
+
+  def destroy
+    @book.destroy
+    redirect_to books_path
   end
 
   private
@@ -48,6 +53,6 @@ class BooksController < ApplicationController
   end
 
   def book_params
-    params.require(:book).permit(:name, :address)
+    params.require(:book).permit(:title, :description, :price, :author)
   end
 end
