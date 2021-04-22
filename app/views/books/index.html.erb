@@ -1,11 +1,5 @@
 <h1>Browse our books</h1>
-<div class="container-form-search">
-  <%= simple_form_for :book_search, url: books_index_path, method: "GET" do |f| %>
-    <%= text_field_tag :query, params[:query], autocomplete: :off,
-        placeholder: "Search by book title..." %>
-    <input type="submit" name=”commit”  value="Search" class="btn btn-success">
-  <% end %>
-</div>
+<%= render 'shared/search_bar' %>
 <div class="container-search-results">
   <% if @books.empty? %>
     <h2>No books where found :(</h2>
