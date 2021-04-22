@@ -10,29 +10,38 @@ RSpec.describe Merchant, type: :model do
     )
   end
 
-  it 'is valid with valid attributes' do
-    expect(subject).to be_valid
+  describe 'Validations' do
+    it 'is valid with valid attributes' do
+      expect(subject).to be_valid
+    end
+
+    it 'is not valid without an email' do
+      subject.email = nil
+      expect(subject).to_not be_valid
+    end
+
+    it 'is not valid without a name' do
+      subject.name = nil
+      expect(subject).to_not be_valid
+    end
+
+    it 'is not valid without a password' do
+      subject.password = nil
+      expect(subject).to_not be_valid
+    end
+
+    it 'is not valid without a phone' do
+      subject.phone = nil
+      expect(subject).to_not be_valid
+    end
   end
 
-  it 'is not valid without an email' do
-    subject.email = nil
-    expect(subject).to_not be_valid
-  end
-
-  it 'is not valid without a name' do
-    subject.name = nil
-    expect(subject).to_not be_valid
-  end
-
-  it 'is not valid without a password' do
-    subject.password = nil
-    expect(subject).to_not be_valid
-  end
-
-  it 'is not valid without a phone' do
-    subject.phone = nil
-    expect(subject).to_not be_valid
-  end
+  # describe 'Method update_earnings' do
+  #   it 'Should increment merchant earnings' do
+  #     subject.phone = nil
+  #     expect(subject).to_not be_valid
+  #   end
+  # end
 
   describe 'validations' do
     it 'is not valid if the email is already taken' do
