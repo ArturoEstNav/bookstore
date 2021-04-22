@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Merchant, type: :model do
   subject do
     described_class.new(
-      email: 'arturo@telos.com',
+      email: 'art@telos.com',
       name: 'Arturo',
       password: 'Loremipsum',
       phone: '555-683-5688'
@@ -36,12 +36,14 @@ RSpec.describe Merchant, type: :model do
     end
   end
 
-  # describe 'Method update_earnings' do
-  #   it 'Should increment merchant earnings' do
-  #     subject.phone = nil
-  #     expect(subject).to_not be_valid
-  #   end
-  # end
+  describe '#update_earnings' do
+    it 'Should increment merchant earnings' do
+      previous_earnings = subject.earnings
+      subject.update_earnings(20)
+      result = (previous_earnings < subject.earnings)
+      expect(result).to be_truthy
+    end
+  end
 
   describe 'validations' do
     it 'is not valid if the email is already taken' do
