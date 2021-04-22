@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # get 'carts/show'
   get 'books/new'
   get 'books/edit'
-  get 'books/show'
+  # get 'books/show'
   get 'books/index'
   get 'home', to: 'pages#home'
   get 'about', to: 'pages#about'
