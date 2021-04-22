@@ -8,4 +8,9 @@ class Merchant < ApplicationRecord
 
   validates :phone, :name, presence: true
   validates :email, uniqueness: true
+
+  def update_earnings(amount)
+    self.earnings += amount
+    self.save
+  end
 end
