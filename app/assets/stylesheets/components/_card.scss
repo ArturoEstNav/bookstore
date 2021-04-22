@@ -5,6 +5,11 @@
   padding: 16px;
 }
 
+.card-book{
+  height: 200px;
+  width: 100%;
+}
+
 .card-book-small{
   width: 42%;
 
@@ -13,5 +18,11 @@
 @media screen and (min-width: 995px) {
   .card-book-small{
     width: 22%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .card-book{
+    width: 42%;
   }
 }
