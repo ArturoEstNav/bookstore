@@ -17,7 +17,7 @@ customer.save
 puts 'Create new merchant'
 merchant = Merchant.new(
   email: 'contact@arturoestnav.com',
-  name: 'Arturian bookstores',
+  name: 'Artorian bookstores',
   password: '123456',
   phone: '555-895-1237'
 )

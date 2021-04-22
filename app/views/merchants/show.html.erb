@@ -1,5 +1,15 @@
-<h1><%= @merchant.name %></h1>
-<p>Earnings: $<%= @merchant.earnings %></p>
-<% @sold_books.each do |book| %>
-  <%= book.title %>
-<% end %>
+  <div>
+    <h1 class="pb-4"><%= @merchant.name %></h1>
+    <h3 class="pb-4"> My earnings:
+      <span class="text-primary">$<%= @merchant.earnings %> </span>
+    </h3>
+    <div>
+      <h3>My sold books</h3>
+      <ul>
+        <% @sold_books.each do |book| %>
+          <li><%= book.title %></li>
+        <% end %>
+      </ul>
+    </div>
+
+  </div>

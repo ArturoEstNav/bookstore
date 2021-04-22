@@ -1,14 +1,25 @@
-<h1><%= @book.title %></h1>
-<div>
-  <p><%= @book.description %></p>
-  <p><%= @book.merchant_name %></p>
+<div class="container-main">
+  <div>
+    <h1><%= @book.title %></h1>
+    <div class="mt-5">
+      <p><%= @book.description %></p>
+      <p class=""><%= @book.merchant_name %></p>
+    </div>
+    <div>
+      <p>$<%= @book.price %></p>
+    </div>
+    <% if merchant_signed_in? %>
+      <%= link_to "Edit book", edit_book_path(@book) %>
+    <% end %>
+    <div class="mt-5">
+      <%= simple_form_for @cart_item do |f| %>
+        <%= f.input :book_id, as: :hidden, input_html: { value: @book.id } %>
+        <%= f.input :cart_id, as: :hidden, input_html: { value: @cart.id } %>
+        <%= f.submit 'Add to cart', class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
 </div>
 <div>
-  <p>$<%= @book.price %></p>
-</div>
+<%= render 'shared/newest_books' %>
 
-<button>
- <!--
-  on action: purchase:
- -->
-</button>

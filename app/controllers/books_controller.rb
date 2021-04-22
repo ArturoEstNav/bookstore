@@ -1,9 +1,8 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update]
+  before_action :set_cart_item, only: [:show, :index]
 
   def index
-    @cart_item = CartItem.new
-
     if params[:query].present?
       @books = Book.where(sold: false).search(params[:query])
     else
@@ -12,6 +11,7 @@ class BooksController < ApplicationController
   end
 
   def show
+    @newest_books = Book.where(sold: false).last(4)
   end
 
   def new
@@ -49,5 +49,9 @@ class BooksController < ApplicationController
 
   def book_params
     params.require(:book).permit(:title, :author, :price, :description)
+  end
+
+  def set_cart_item
+    @cart_item = CartItem.new
   end
 end

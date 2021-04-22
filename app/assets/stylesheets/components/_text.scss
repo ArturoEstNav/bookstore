@@ -19,3 +19,15 @@ h4{
 .text-merchant{
   font-weight: bold;
 }
+
+.text-banner{
+  width: 80%;
+  font-size: 18pt;
+  padding: 32px 0;
+}
+
+@media screen and (min-width: 995px) {
+  .text-banner{
+    width: 60%;
+  }
+}
