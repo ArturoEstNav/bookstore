@@ -8,15 +8,6 @@
   <%= link_to "Find some hidden gems", new_customer_registration_path, class: "btn btn-success" %>
 <% end %>
 <div>
-  <div class="container-books-recent">
-    <% @newest_books.each do |book| %>
-      <div class="card-book-small">
-        <p><%= book.title %></p>
-        <p><%= book.merchant_name %></p>
-        <p>$<%= book.price %></p>
-        <%= link_to "View book", book_path(book), class: "btn btn-primary" %>
-      </div>
-    <% end %>
-  </div>
-  <%= link_to "Browse the entire catalog", books_index_path %>
+<%= render 'shared/newest_books' %>
+<%= link_to "Browse the entire catalog", books_index_path %>
 </div>

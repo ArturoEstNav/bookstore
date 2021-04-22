@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :request_store_credit]
-
+  before_action :set_newest_books
   def show
   end
 
@@ -25,6 +25,10 @@ class CustomersController < ApplicationController
 
   def set_customer
     @customer = Customer.find(current_customer.id)
+  end
+
+  def set_newest_books
+    @newest_books = Book.where(sold: false).last(4)
   end
 
   def customer_params

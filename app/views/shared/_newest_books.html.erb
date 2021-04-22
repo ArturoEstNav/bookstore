@@ -1,0 +1,11 @@
+<div class="container-books-recent">
+  <h2 class="text-info">Newest books</h2>
+  <% @newest_books.each do |book| %>
+    <div class="card card-book-small">
+      <h3 class="text-primary"><%= book.title %></h3>
+      <h4 class="text-info">$<%= book.price %></h4>
+      <p class="text-merchant"><%= book.merchant_name %></p>
+      <%= link_to "View book", book_path(book), class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

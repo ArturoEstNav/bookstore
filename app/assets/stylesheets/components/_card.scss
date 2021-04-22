@@ -1,11 +1,17 @@
 .card-book, .card-book-small{
   display: inline-block;
-  border: 3px solid #ccc;
   border-radius: 3px;
-  margin: 16px;
+  margin: 12px;
   padding: 16px;
 }
 
 .card-book-small{
-  width: 45%;
+  width: 42%;
+
+}
+
+@media screen and (min-width: 995px) {
+  .card-book-small{
+    width: 22%;
+  }
 }

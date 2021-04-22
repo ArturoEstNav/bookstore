@@ -2,3 +2,4 @@
 <h2>Your money: $<%= @customer.balance %></h2>
 
 <%= link_to 'Request store credit', credit_path, method: :patch, remote: true, class: "btn btn-primary"%>
+<%= render 'shared/newest_books' %>
