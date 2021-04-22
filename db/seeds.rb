@@ -19,7 +19,7 @@ merchant = Merchant.new(
   email: 'contact@arturoestnav.com',
   name: 'Artorian bookstores',
   password: '123456',
-  phone: '555-895-1237'
+  phone: '555-895-1247'
 )
 merchant.save
 
